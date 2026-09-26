@@ -19,6 +19,7 @@ Persiste únicamente en la base `orders`, usa Flyway, prepara integración asín
 
 ## Reglas
 - Lee la skill `/java-springboot` y la spec activa, si existe, antes de tocar código.
+- Usa `/clean-architecture` al diseñar o modificar capas, límites, dependencias, casos de uso o adaptadores.
 - Este servicio es la fuente de verdad del pedido y debe conservar el precio aceptado al comprar.
 - Nunca escribas tablas de catálogo o pagos; obtén datos por contratos y publica/consume eventos cuando la spec lo defina.
 - La reserva de stock es trabajo futuro: no inventes su workflow, reintentos o semántica sin una spec.
@@ -28,6 +29,7 @@ Persiste únicamente en la base `orders`, usa Flyway, prepara integración asín
 - Los manifiestos y secretos pertenecen a `infra`; coordina allí cambios de puerto, ruta o configuración.
 
 ## Al terminar cualquier tarea
+- Tras cambios no triviales de código de producción, aplica `/clean-code-guard` antes de finalizar.
 - Ejecuta `./mvnw verify`; incluye Checkstyle y los tests.
 - Cubre transiciones, precios acordados y errores relevantes con tests; añade migraciones para cambios de esquema.
 - Comprueba que no se hayan roto `/orders` ni los endpoints de Actuator.
