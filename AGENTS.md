@@ -21,6 +21,7 @@ Persiste únicamente en la base `orders`, usa Flyway, prepara integración asín
 - Lee la spec activa, si existe, antes de tocar código.
 - Para implementar usa solo `/spring-boot-project-creator` en su opción Layered y `/clean-code-guard`.
 - La opción Layered organiza el paquete `com.friendlyeshop.order` en `controller/`, `service/`, `repository/`, `model/`, `model/dto/`, `config/` y `exception/`.
+- Usa `/spring-boot-layered-template` como complemento de la opción Layered cuando una clase no encaje claramente en las carpetas básicas o al decidir si corresponde crear paquetes como `client/`, `http/`, `auth/`, `security/`, `messaging/`, `event/`, `mapper/` o `validation/`.
 - No uses la opción DDD de esa skill ni regeneres el proyecto con Spring Initializr al modificar este servicio.
 - Este servicio es la fuente de verdad del pedido y debe conservar el precio aceptado al comprar.
 - Nunca escribas tablas de catálogo o pagos; obtén datos por contratos y publica/consume eventos cuando la spec lo defina.
