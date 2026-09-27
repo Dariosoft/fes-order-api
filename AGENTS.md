@@ -18,8 +18,10 @@ Persiste únicamente en la base `orders`, usa Flyway, prepara integración asín
 - Crea nuevas migraciones Flyway; no edites migraciones ya aplicadas. Hibernate solo valida el esquema.
 
 ## Reglas
-- Lee la skill `/java-springboot` y la spec activa, si existe, antes de tocar código.
-- Usa `/clean-architecture` al diseñar o modificar capas, límites, dependencias, casos de uso o adaptadores.
+- Lee la spec activa, si existe, antes de tocar código.
+- Para implementar usa solo `/spring-boot-project-creator` en su opción Layered y `/clean-code-guard`.
+- La opción Layered organiza el paquete `com.friendlyeshop.order` en `controller/`, `service/`, `repository/`, `model/`, `model/dto/`, `config/` y `exception/`.
+- No uses la opción DDD de esa skill ni regeneres el proyecto con Spring Initializr al modificar este servicio.
 - Este servicio es la fuente de verdad del pedido y debe conservar el precio aceptado al comprar.
 - Nunca escribas tablas de catálogo o pagos; obtén datos por contratos y publica/consume eventos cuando la spec lo defina.
 - La reserva de stock es trabajo futuro: no inventes su workflow, reintentos o semántica sin una spec.
