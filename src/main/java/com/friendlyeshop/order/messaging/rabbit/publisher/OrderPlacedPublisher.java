@@ -1,6 +1,8 @@
-package com.friendlyeshop.order.messaging.rabbit;
+package com.friendlyeshop.order.messaging.rabbit.publisher;
 
 import com.friendlyeshop.order.constants.MessagingNames;
+import com.friendlyeshop.order.messaging.rabbit.codec.OrderPlacedMessageCodec;
+import com.friendlyeshop.order.messaging.rabbit.model.OrderPlacedMessage;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.concurrent.ExecutionException;

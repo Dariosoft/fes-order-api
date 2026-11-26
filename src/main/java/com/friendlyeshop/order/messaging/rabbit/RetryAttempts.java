@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RetryAttempts {
 
-    static final int MAX_ATTEMPTS = 5;
+    public static final int MAX_ATTEMPTS = 5;
 
     private static final String X_DEATH_QUEUE = "queue";
 

@@ -1,7 +1,8 @@
-package com.friendlyeshop.order.messaging.rabbit;
+package com.friendlyeshop.order.messaging.rabbit.codec;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.friendlyeshop.order.messaging.rabbit.model.StockResultMessage;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.UUID;

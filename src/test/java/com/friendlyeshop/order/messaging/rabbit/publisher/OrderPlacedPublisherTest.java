@@ -1,4 +1,4 @@
-package com.friendlyeshop.order.messaging.rabbit;
+package com.friendlyeshop.order.messaging.rabbit.publisher;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -9,6 +9,9 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import com.friendlyeshop.order.constants.MessagingNames;
+import com.friendlyeshop.order.messaging.rabbit.codec.OrderPlacedMessageCodec;
+import com.friendlyeshop.order.messaging.rabbit.model.OrderPlacedItemMessage;
+import com.friendlyeshop.order.messaging.rabbit.model.OrderPlacedMessage;
 import com.friendlyeshop.order.model.enums.Currency;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;

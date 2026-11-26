@@ -2,7 +2,7 @@ package com.friendlyeshop.order.model.dto.in;
 
 import com.friendlyeshop.order.constants.MessagingNames;
 import com.friendlyeshop.order.exception.InvalidStockResultException;
-import com.friendlyeshop.order.messaging.rabbit.StockResultMessage;
+import com.friendlyeshop.order.messaging.rabbit.model.StockResultMessage;
 import com.friendlyeshop.order.model.enums.OrderStatus;
 import java.time.Instant;
 import java.util.UUID;

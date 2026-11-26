@@ -1,4 +1,4 @@
-package com.friendlyeshop.order.messaging.rabbit;
+package com.friendlyeshop.order.messaging.rabbit.listener;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyBoolean;
@@ -10,6 +10,10 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 import com.friendlyeshop.order.constants.MessagingNames;
+import com.friendlyeshop.order.messaging.rabbit.RetryAttempts;
+import com.friendlyeshop.order.messaging.rabbit.codec.StockResultMessageCodec;
+import com.friendlyeshop.order.messaging.rabbit.model.StockResultMessage;
+import com.friendlyeshop.order.messaging.rabbit.publisher.StockResultDeadLetterPublisher;
 import com.friendlyeshop.order.service.StockResultOutcome;
 import com.friendlyeshop.order.service.StockResultService;
 import com.rabbitmq.client.Channel;

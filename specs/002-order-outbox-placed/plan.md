@@ -21,12 +21,15 @@ Se respeta `AGENTS.md`: Java 25, Spring Boot 4.1, paquete `com.friendlyeshop.ord
 - `model/dto/request/CreateOrderRequest.java`, `model/dto/request/OrderItemRequest.java`: contrato HTTP de entrada con Bean Validation.
 - `model/dto/in/CreateOrderDetails.java`, `model/dto/in/OrderItemDetails.java`, `model/dto/in/StockResultDetails.java`: comandos/resultados internos ya validados.
 - `model/dto/out/OrderResponse.java`, `model/dto/out/ErrorResponse.java`: contrato HTTP de salida.
-- `messaging/rabbit/OrderPlacedMessage.java`, `messaging/rabbit/OrderPlacedItemMessage.java`: payload del evento `order.placed`.
-- `messaging/rabbit/StockResultMessage.java`: payload de entrada de `stock.reserved`/`stock.rejected`.
-- `messaging/rabbit/OrderPlacedPublisher.java`: publicación con confirms hacia `orders`/`order.placed`.
-- `messaging/rabbit/StockResultListener.java`: `@RabbitListener` de la cola `order.stock-results`, con ACK/NACK y política de reintentos.
-- `messaging/rabbit/StockResultDeadLetterPublisher.java`: publica el mensaje agotado en `order.stock-results.dlq` y permite el ACK.
-- `messaging/rabbit/RetryAttempts.java`: calcula el intento actual a partir de la cabecera `x-death`.
+- `messaging/rabbit/model/OrderPlacedMessage.java`, `messaging/rabbit/model/OrderPlacedItemMessage.java`: payload del evento `order.placed`.
+- `messaging/rabbit/model/StockResultMessage.java`: payload de entrada de `stock.reserved`/`stock.rejected`.
+- `messaging/rabbit/codec/OrderPlacedMessageCodec.java`: codifica y decodifica el payload `order.placed`.
+- `messaging/rabbit/codec/StockResultMessageCodec.java`: decodifica el payload de resultado de stock.
+- `messaging/rabbit/publisher/OrderPlacedPublisher.java`: publicación con confirms hacia `orders`/`order.placed`.
+- `messaging/rabbit/publisher/PublishOutcome.java`: resultado de la publicación.
+- `messaging/rabbit/listener/StockResultListener.java`: `@RabbitListener` de la cola `order.stock-results`, con ACK/NACK y política de reintentos.
+- `messaging/rabbit/publisher/StockResultDeadLetterPublisher.java`: publica el mensaje agotado en `order.stock-results.dlq` y permite el ACK.
+- `messaging/rabbit/RetryAttempts.java`: helper transversal que calcula el intento actual a partir de la cabecera `x-death`.
 - `messaging/outbox/OutboxRelay.java`: relay programado que publica pendientes y actualiza el outbox.
 - `config/OutboxConfig.java`: `@EnableScheduling` y propiedades del relay.
 - `config/RabbitConfig.java`: confirmaciones, returns y `mandatory` del `RabbitTemplate`; no declara exchanges, colas ni bindings, que pertenecen a `infra`.

@@ -2,8 +2,8 @@ package com.friendlyeshop.order.service;
 
 import com.friendlyeshop.order.exception.InvalidOrderException;
 import com.friendlyeshop.order.messaging.OrderEventMetrics;
-import com.friendlyeshop.order.messaging.rabbit.OrderPlacedMessage;
-import com.friendlyeshop.order.messaging.rabbit.OrderPlacedMessageCodec;
+import com.friendlyeshop.order.messaging.rabbit.codec.OrderPlacedMessageCodec;
+import com.friendlyeshop.order.messaging.rabbit.model.OrderPlacedMessage;
 import com.friendlyeshop.order.model.Order;
 import com.friendlyeshop.order.model.OrderItem;
 import com.friendlyeshop.order.model.OrderOutbox;

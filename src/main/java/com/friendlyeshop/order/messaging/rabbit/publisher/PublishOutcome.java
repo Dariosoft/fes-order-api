@@ -1,4 +1,4 @@
-package com.friendlyeshop.order.messaging.rabbit;
+package com.friendlyeshop.order.messaging.rabbit.publisher;
 
 public record PublishOutcome(boolean published, String reason) {
 

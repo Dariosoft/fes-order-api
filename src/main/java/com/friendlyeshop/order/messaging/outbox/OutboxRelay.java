@@ -1,10 +1,10 @@
 package com.friendlyeshop.order.messaging.outbox;
 
 import com.friendlyeshop.order.messaging.OrderEventMetrics;
-import com.friendlyeshop.order.messaging.rabbit.OrderPlacedMessage;
-import com.friendlyeshop.order.messaging.rabbit.OrderPlacedMessageCodec;
-import com.friendlyeshop.order.messaging.rabbit.OrderPlacedPublisher;
-import com.friendlyeshop.order.messaging.rabbit.PublishOutcome;
+import com.friendlyeshop.order.messaging.rabbit.codec.OrderPlacedMessageCodec;
+import com.friendlyeshop.order.messaging.rabbit.model.OrderPlacedMessage;
+import com.friendlyeshop.order.messaging.rabbit.publisher.OrderPlacedPublisher;
+import com.friendlyeshop.order.messaging.rabbit.publisher.PublishOutcome;
 import com.friendlyeshop.order.model.OrderOutbox;
 import com.friendlyeshop.order.model.enums.OutboxStatus;
 import com.friendlyeshop.order.repository.OrderOutboxRepository;

@@ -1,5 +1,6 @@
-package com.friendlyeshop.order.messaging.rabbit;
+package com.friendlyeshop.order.messaging.rabbit.codec;
 
+import com.friendlyeshop.order.messaging.rabbit.model.StockResultMessage;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.json.JsonMapper;
 

@@ -1,5 +1,9 @@
-package com.friendlyeshop.order.messaging.rabbit;
+package com.friendlyeshop.order.messaging.rabbit.listener;
 
+import com.friendlyeshop.order.messaging.rabbit.RetryAttempts;
+import com.friendlyeshop.order.messaging.rabbit.codec.StockResultMessageCodec;
+import com.friendlyeshop.order.messaging.rabbit.model.StockResultMessage;
+import com.friendlyeshop.order.messaging.rabbit.publisher.StockResultDeadLetterPublisher;
 import com.friendlyeshop.order.model.dto.in.StockResultDetails;
 import com.friendlyeshop.order.service.StockResultService;
 import com.rabbitmq.client.Channel;

@@ -1,4 +1,4 @@
-package com.friendlyeshop.order.messaging.rabbit;
+package com.friendlyeshop.order.messaging.rabbit.model;
 
 import com.friendlyeshop.order.model.OrderItem;
 import com.friendlyeshop.order.model.enums.Currency;
