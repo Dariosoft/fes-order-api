@@ -40,10 +40,8 @@ class OrderControllerWebTest {
     private OrderService orderService;
 
     @Test
-    void servesTheControllerUnderTheOrdersPrefix() throws Exception {
-        mockMvc.perform(get("/orders"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.service").value("order-api"));
+    void rejectsGetOnOrdersRoot() throws Exception {
+        mockMvc.perform(get("/orders")).andExpect(status().isMethodNotAllowed());
     }
 
     @Test
