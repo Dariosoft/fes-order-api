@@ -40,8 +40,8 @@ class OrderControllerWebTest {
     private OrderService orderService;
 
     @Test
-    void rejectsGetOnOrdersRoot() throws Exception {
-        mockMvc.perform(get("/orders")).andExpect(status().isMethodNotAllowed());
+    void rejectsGetOnPurchasesRoot() throws Exception {
+        mockMvc.perform(get("/orders/purchases")).andExpect(status().isMethodNotAllowed());
     }
 
     @Test
@@ -56,7 +56,7 @@ class OrderControllerWebTest {
         when(orderService.create(any(CreateOrderDetails.class))).thenReturn(new OrderResponse(
                 orderId, OrderStatus.PENDING, new BigDecimal("20.00"), Currency.ARS));
 
-        mockMvc.perform(post("/orders")
+        mockMvc.perform(post("/orders/purchases")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(body(item(PRODUCT_ID, 2, "10.00", "ARS"))))
                 .andExpect(status().isCreated())
@@ -69,7 +69,7 @@ class OrderControllerWebTest {
     @ParameterizedTest
     @MethodSource("invalidBodies")
     void rejectsInvalidRequestWithoutCallingTheService(String requestBody) throws Exception {
-        mockMvc.perform(post("/orders")
+        mockMvc.perform(post("/orders/purchases")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestBody))
                 .andExpect(status().isBadRequest())
@@ -83,7 +83,7 @@ class OrderControllerWebTest {
         when(orderService.create(any(CreateOrderDetails.class)))
                 .thenThrow(new InvalidOrderException("mixed currencies"));
 
-        mockMvc.perform(post("/orders")
+        mockMvc.perform(post("/orders/purchases")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(body(item(PRODUCT_ID, 1, "10.00", "ARS"))))
                 .andExpect(status().isBadRequest())
