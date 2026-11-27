@@ -1,5 +1,6 @@
 package com.friendlyeshop.order.model;
 
+import com.friendlyeshop.order.model.enums.KafkaOutboxStatus;
 import com.friendlyeshop.order.model.enums.OutboxStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -51,6 +52,19 @@ public class OrderOutbox {
     @Column(name = "next_attempt_at", nullable = false)
     private Instant nextAttemptAt;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "kafka_status", nullable = false, length = 20)
+    private KafkaOutboxStatus kafkaStatus;
+
+    @Column(name = "kafka_published_at")
+    private Instant kafkaPublishedAt;
+
+    @Column(name = "kafka_attempts", nullable = false)
+    private int kafkaAttempts;
+
+    @Column(name = "kafka_next_attempt_at", nullable = false)
+    private Instant kafkaNextAttemptAt;
+
     protected OrderOutbox() {
     }
 
@@ -66,6 +80,9 @@ public class OrderOutbox {
         outbox.createdAt = occurredAt;
         outbox.attempts = 0;
         outbox.nextAttemptAt = occurredAt;
+        outbox.kafkaStatus = KafkaOutboxStatus.PENDING;
+        outbox.kafkaAttempts = 0;
+        outbox.kafkaNextAttemptAt = occurredAt;
         return outbox;
     }
 }
