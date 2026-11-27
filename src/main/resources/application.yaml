@@ -23,6 +23,15 @@ spring:
       simple:
         acknowledge-mode: manual
         default-requeue-rejected: false
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      acks: all
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 5
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 management:
   endpoints:
     web:
@@ -48,3 +57,8 @@ app:
     confirm-timeout-ms: 5000
   rabbitmq:
     stock-results-queue: order.stock-results
+  kafka:
+    topic: orders.events
+    poll-interval-ms: 5000
+    batch-size: 50
+    send-timeout-ms: 5000

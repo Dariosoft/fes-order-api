@@ -8,6 +8,8 @@ public final class MessagingNames {
 
     public static final String ORDERS_EXCHANGE = "orders";
 
+    public static final String ORDERS_TOPIC = "orders.events";
+
     public static final String ORDER_PLACED_ROUTING_KEY = "order.placed";
 
     public static final String ORDER_PLACED_EVENT = "order.placed";
